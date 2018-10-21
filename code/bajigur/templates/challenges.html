@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container" id="challss">
+    {% if jenis_soal %}
+    {% for types in jenis_soal %}
+        <h1 style="font-family: Ubuntu;">{{ types.tipe }}</h1>
+        <div class="btn-group">
+        {% for data in challs %}{% if data['tipe'] == types.tipe and data['status'] == 'Active' %}
+                <button type="button" id="{{data.id}}" class="button buttons;btn btn-primary" style="{% if data.color %}{{ data.color }}{% endif %}">
+                        <dl>
+                            <dt>{{ data.name }}</dt>
+                            <dd>{{ data.poin }}</dd>
+                        </dl>
+                </button>{% endif %}{% endfor %}</div><br><br><br><br>{% endfor %}
+    {% else %}
+	<div class="jumbotron text-center tekss">
+           <h1>No Challenges yet</h1>
+       </div>
+    {% endif %}
+        <div class="modal fade" id="challmodal" role="dialog">
+            <div class="modal-dialog">                      
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <ul class="nav nav-tabs" id="tabContent">
+                        <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+                        <li><a href="#solves" data-toggle="tab">Solves</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="details">
+                            <div class="modal-header">
+                                <div id="notifmodal"></div>
+                                <h4 class="modal-title ; text text-center" id="chall_title"></h4>
+                                <h4 class="modal-title ; text text-center" id="chall_poin"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p style="white-space: pre-wrap;" id="chall_deskripsi"></p>
+                                <br><br>
+                                <div id="tempat_file">
+        
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                    <form>
+                                        <input type="text" name="flag" class="form-control">
+                                        <input type="hidden" name="id_soal" id="soal_id"><br>
+                                        <input type="hidden" name="methodd" value="subflag">
+                                        <button type="button" id="submitflag" class="btn btn-primary">Submit</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="solves">
+                            <div class="modal-body">
+                                <table class="table table-striped" style="color : #07305A">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Team</th>
+                                            <th scope="col">Solve Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tempat_solves">
+                                    </tbody>
+                                </table>              
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>                      
+        </div>
+</div>        
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'admin/layout.html' %}
+
+{% block body %}
+
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Challenges
+                <button class="glyphicon glyphicon-plus-sign" id="modalchall"></button>
+            </h1>
+        </div>
+    </div>
+    <table class="table table-striped">
+            <th>ID</th>
+            <th>Chall name</th>
+            <th>Poin</th>
+            <th>Tipe</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>File</th>
+            <th>Delete</th>
+        </tr>
+        {% for liss in hasil%}
+            <tr id="{{liss.id}}">
+                <td>{{liss.id}}</td>
+                <td>{{liss.name}}</td>
+                <td>{{liss.poin}}</td>
+                <td>{{liss.tipe}}</td>
+                <td id="{{liss.status}}"><button id="soal" class="{% if liss.status == "Hidden" %}{{'btn btn-danger pullright'}}{% else %}{{'btn btn-success pullright'}}{% endif %}">{{liss.status}}</button></td>
+                <td><button class="btn btn-primary pullright" id="modalchall">Edit</button></td>
+                <td><button class="btn btn-default pullright" id="modalfile">File</button></td>
+                <td><a href="{{url_for('admin.delete_chall',id=liss.id)}}" class="btn btn-danger pullright">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="modal fade" id="modalchalls" role="dialog">
+        <div class="modal-dialog modal-lg">               
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create Challs</h4>
+                </div>
+                <form method="POST" id="formchall" action="{{url_for('admin.create_chall')}}">
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nama">Nama Soal</label>
+                                <input id="namasoal" type="text" name="nama" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipe">Tipe Soal</label>
+                                <input id="tipesoal" type="text" name="tipe" class="form-control"> 
+                            </div>
+                            <label for="deskripsi">Deskripsi</label><br>
+                            <textarea id="deskripsisoal" name="deskripsi" style="height : 200px; width : 870px;"></textarea>      
+                            <div class="form-group">
+                                <label for="poin">Poin</label>
+                                <input id="poinsoal" type="text" name="poin" class="form-control">           
+                            </div>
+                            <div class="form-group">
+                                    <label for="flag">Flag</label>
+                                    <input id="flagsoal" type="text" name="flag" class="form-control">           
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pullright">Submit</button>
+                    </div>
+                </form>
+            </div>                      
+        </div>
+    </div>
+    <div class="modal fade" id="modalfiles" role="dialog">
+        <div class="modal-dialog modal-lg">               
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload File</h4>
+                </div>
+                <form method="POST">
+                    <div class="modal-body">
+                        <form method='POST' enctype="multipart/form-data" action="">
+                            <div id="file_label">
+                                    <label for="flag">File</label>
+                                    <input class="form-control-file" type="file" name="files[]" multiple="multiple"><br> 
+                                    <input id="files-chal" name='chal' type='hidden'>
+                                    <input type="hidden" name="method" value="upload">
+                                    <input type="hidden" name="challid" id="challid">       
+                            </div>
+                            <table id="current-files" class="table table-striped">
+                                <tr>
+                                    <th>File</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </table>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="submit" id="submit-files" class="btn btn-primary pullright">Upload</button>
+                    </div>
+                </form>
+            </div>                      
+        </div>
+    </div>
+{% endblock %}

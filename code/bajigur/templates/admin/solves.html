@@ -1,0 +1,27 @@
+{% extends 'admin/layout.html' %}
+
+{% block body %}
+    <div class="jumbotron text-center tekss">
+        <h1>Solves</h1>
+    </div>
+    <table class="table table-striped" style="color : #07305A">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Team</th>
+                <th scope="col">Chall Name</th>
+                <th scope="col">Flag</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for x in solves %}
+            <tr>
+                <td><a href="{{url_for('admin.admin_team',id=x.id_team)}}">{{x.team_name}}</a></td>
+                <td>{{x.name}}</td>
+                <td>{{x.flag}}</td>
+                <td><a href="{{url_for('admin.delete_solve',id_soal=x.id_soal,id_team=x.id_team)}}" class="btn btn-danger pullright">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock%}

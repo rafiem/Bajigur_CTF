@@ -1,0 +1,35 @@
+{% extends 'admin/layout.html' %}
+
+{% block body %}
+    <div class="jumbotron text-center tekss">
+        <h1>Teams</h1>
+    </div>
+    <table class="table table-striped" style="color : #07305A">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Team</th>
+                <th scope="col">Institution</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Status</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for x in data %}
+            <tr id="{{x.id}}">
+                <td><a href="{{url_for('admin.admin_team',id=x.id)}}">{{x.name}}</a></td>
+                <td>{{x.institution}}</td>
+                <td>
+                {% if x.admin %}
+                    <button class="btn btn-success">Admin</button>
+                {% endif %}
+                </td>
+                <td id="{{x.status}}">
+                    <button id="team" class="{% if x.status == "Hidden" %}{{'btn btn-danger pullright'}}{% else %}{{'btn btn-success pullright'}}{% endif %}">{{x.status}}</button>
+                </td>
+                <td id="{{x.id}}"><button class="btn btn-danger pullright"><a href="{{url_for('admin.delete_team',id=x.id)}}"></a>Delete</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

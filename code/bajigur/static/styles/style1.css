@@ -1,0 +1,26 @@
+.button{
+    background-color : black;
+    width : 220px;
+    height: 110px;
+    border:1px solid;
+    color :white;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    font-weight: bold;
+    font-family: Ubuntu;
+    display: inline-block;
+}
+
+.buttons { font-size: 16pt;}
+
+.tekss { 
+    font-family: Ubuntu;
+}
+
+.tekss2{
+    font-family: Ubuntu;
+    color: aqua;
+}
+
+/* #17202A */

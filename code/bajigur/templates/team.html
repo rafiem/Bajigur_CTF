@@ -1,0 +1,29 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+    <div class="jumbotron text-center tekss">
+        <h1>Team</h1>
+        <h1>{{team.name}}</h1>
+    </div>
+    <div class="text-center tekss">
+        <h1>Total Score</h1>
+        <h1>{{team.score}}</h1>
+    </div>
+    <br><br>
+    <table class="table table-striped">
+        <tr>
+            <th>Chall Name</th>
+            <th>Poin</th>
+            <th>Tipe</th>
+            <th>Solve Time</th>
+        </tr>
+        {% for x in data %}
+            <tr>
+                <td>{{x.name}}</td>
+                <td>{{x.poin}}</td>
+                <td>{{x.tipe}}</td>
+                <td>{{x.solve_time}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

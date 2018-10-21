@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="jumbotron text-center tekss">
+        <h1>Your Profile</h1>
+    </div>
+    <form method="POST" action="">
+        <div class="form-group">
+            <label>Team Name</label>
+            <input type="text" name="team_name" class="form-control" value="{{data.name}}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="team_email" class="form-control" value="{{data.email}}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Institution (optional)</label>
+            <input type="text" name="team_institusi" class="form-control" value="{{data.institution}}">
+            <span class="help-inline ; alert-danger">{{errors.inst}}</span>
+        </div>
+        <div class="form-group">
+            <label>Current Password</label>
+            <input type="password" name="curr_pass" class="form-control">
+            <span class="help-inline ; alert-danger">{{errors.currpass}}</span>
+        </div>
+        <div class="form-group">
+            <label>New Password</label>
+            <input type="password" name="new_pass" class="form-control">
+            <span class="help-inline ; alert-danger">{{errors.newpass}}</span>
+        </div>
+        <p style="color : red"><b>*Kalo lupa password kontak aja admin :v</b></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="jumbotron text-center tekss">
+        <h1>Scoreboard</h1>
+    </div>
+    <table class="table table-striped" style="color : #07305A">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Place</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Last Solve</th>                                        
+                    <th scope="col">Institution</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for x in range(scores|length) %}
+                {% if scores[x].score > 0 %}
+                    <tr>
+                        <td>{{x+1}}</td>
+                        <td><a href="{{url_for('views.team',id=scores[x].id)}}">{{scores[x].name}}</a></td>
+                        <td>{{scores[x].score}}</td>
+                        <td>{{scores[x].last_solve}}</td>
+                        <td>{{scores[x].institution}}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

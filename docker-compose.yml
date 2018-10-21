@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  code:
+    image: bajigur_ctf
+    build:
+      context: code/.
+    ports:
+      - "ENTER_YOUR_PORT:5000"
+    links:
+      - db
+    volumes:
+      - ./code:/home/bajigur_ctf
+    depends_on:
+      - db
+
+  db:
+    image: mysql:bajigur
+    build: db/.
+    restart: always
+    environment:
+      MYSQL_PASSWORD: YOUR_SQL_PASSWORD
+      MYSQL_HOST: localhost
+      MYSQL_DB: YOUR_DB_NAME
+      MYSQL_USER: YOUR_SQL_USER
+    volumes:
+      - ./mysql:/var/lib/mysql  # settings 
+      - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf # enter your mysqld.cnf to the repo
+    ports:
+      - "3306:3306"
+    # This command is required to set important mariadb defaults
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]

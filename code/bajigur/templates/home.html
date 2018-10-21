@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Welcome to</h1>
+	<h1>Estave CTF</h1>
+        <p class="lead">Built with love :v</p>
+    </div>
+    <h2><b>Apa itu CTF?</b></h2>
+<p>Capture The Flag atau yang sering kita sebut CTF is a special kind of information security competitions. Seperti namanya, tujuan utama CTF yaitu capture the 'flag'. Flag berupa string yang biasanya memiliki format. Biasanya ada 3 tipe CTF. Jeopardy, Attack-Defence, dan <strike>ganda campuran</strike> mixed.</p><p><h4>Jeopardy</h4></p>
+<p>Biasanya Jeopardy terdiri dari beberapa kategori. Diantaranya, Web, Forensic, Crypto, BinaryExploit, dankawankawan. Setiap orang/tim memperoleh score dari tiap soal yang berhasil dijawab. Score yang didapatkan tergantung dari tingkat kesulitan soal.</p><p><h4>Attack-Defence</h4></p>
+<p>Kalo ini beda lagi. Setiap tim punya own network(or only one host) with vulnarable service. Yang perlu dilakukan yaitu melakukan patching your service and developing exploits usually.<p>
+
+<h4>Mixed</h4>
+<p>Gabungan dari keduanya <small>(mungkin)</small></p>
+<h6><a href="https://ctftime.org/ctf-wtf/">sumber</a></h6>
+<br>
+<h3><b>Kategori</b></h3>
+<p>Seperti yang dikatakan sebelumnya, ada beberapa kategori yang ada, yaitu</p><p><div>
+  <ul>
+    <li><b>Binary Exploitation:</b> Diberikan file binary, analisa kelemahan, exploit!</li>
+    <li><b>Cryptography:</b> Diberikan encrypted text, tinggal decrypt!</li>
+    <li><b>Forensics:</b> Diberikan file yang aneh atau berupa network capture, analisa!</li>
+    <li><b>Reverse Engineering:</b> Diberikan file program, reversing!</li>
+    <li><b>Web:</b> Diberikan website, cari kelemahan, exploit!</li>
+  </ul>
+</div></p>
+    <div style="font-size : 14px">
+        <p><h3><b>Rules</b></h3></p>
+            <h6>1. Dilarang melakukan Denial of Service ke server</h6>
+            <h6>2. Dilarang melakukan Bruteforce jawaban flag</h6>
+            <h6>5. Format Flag: flag berawalan <b>Estave{</b> kemudian diikuti oleh <b>string</b> (biasanya tulisan alay) dan diakhiri dengan <b>}</b></h6>
+            <h6>6. Contoh Flag: <b>Estave{B3giN1_c0nToH_fL4G_nY4_gAn}</b></h6>
+            <h6>7. Jika format flag yang ditemukan berbeda,wrap string flag dalam {} ke GamaCTF{}.</h6>
+    </div>
+{% endblock %}
