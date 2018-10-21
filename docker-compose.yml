@@ -20,7 +20,7 @@ services:
     restart: always
     environment:
       MYSQL_PASSWORD: YOUR_SQL_PASSWORD
-      MYSQL_HOST: localhost
+      MYSQL_HOST: YOUT_SQL_HOST
       MYSQL_DB: YOUR_DB_NAME
       MYSQL_USER: YOUR_SQL_USER
     volumes:
